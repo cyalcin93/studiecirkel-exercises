@@ -8,12 +8,18 @@ object Bob {
      * @return bob's response to the spoken sentence
      */
     fun hey(input: String): String = with(input.trim()) {
+        val isQuestionAndShouted = "[^a-z]+?[A-Z][^a-z]+\\?\$".toRegex()
+        val isShouted = "[^a-z]+?[A-Z][^a-z]+".toRegex()
+        val isSilent = "^$".toRegex()
+        val isQuestion = ".+\\?\$".toRegex()
+
         return when {
-            matches("[^a-z]+?[A-Z][^a-z]+\\?\$".toRegex()) -> "Calm down, I know what I'm doing!"
-            matches("[^a-z]+?[A-Z][^a-z]+".toRegex()) -> "Whoa, chill out!"
-            matches("^$".toRegex()) -> "Fine. Be that way!"
-            matches(".+\\?\$".toRegex()) -> "Sure."
+            matches(isQuestionAndShouted) -> "Calm down, I know what I'm doing!"
+            matches(isShouted) -> "Whoa, chill out!"
+            matches(isSilent) -> "Fine. Be that way!"
+            matches(isQuestion) -> "Sure."
             else -> "Whatever."
         }
     }
+
 }
