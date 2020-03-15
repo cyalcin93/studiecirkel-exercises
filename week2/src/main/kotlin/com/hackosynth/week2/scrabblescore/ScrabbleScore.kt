@@ -1,6 +1,7 @@
 package com.hackosynth.week2.scrabblescore
 
 object ScrabbleScore {
+<<<<<<< HEAD
 
     fun scoreWord(word: String): Int {
         var score = 0
