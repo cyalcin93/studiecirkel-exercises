@@ -21,14 +21,16 @@ object NaturalNumber {
         }
     }
 
-    private fun aliquotSum(naturalNumber: Int): Int {
-        var sum = 0
-        val range = naturalNumber/2
-        for (i in 1..range) {
-            if (naturalNumber % i == 0)
-                sum += i
-        }
+    private fun aliquotSum(naturalNumber: Int) = (1..naturalNumber/2)
+        .fold(0, { sum, num -> if (naturalNumber % num == 0) sum + num else sum })
 
-        return sum
-    }
+//        var sum = 0
+//        val range = naturalNumber/2
+//        for (i in 1..range) {
+//            if (naturalNumber % i == 0)
+//                sum += i
+//        }
+//
+//        return sum
+//    }
 }
